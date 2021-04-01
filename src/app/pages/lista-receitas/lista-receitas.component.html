@@ -1,0 +1,78 @@
+<!-- MENU -->
+<button id="btnMenuCollapse" *ngIf="mode == 'vertical'" nz-button nzType="default" (click)="toggleCollapsed()">
+    <i nz-icon [nzType]="!isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+</button>
+
+<ul nz-menu [nzMode]="mode" nzTheme="dark" *ngIf="mode == 'horizontal' || isCollapsed">
+    <!-- LOGO -->
+    <li nz-menu-item>
+        <img src="../../../assets/imgs/logo-coco-bambu-mini.png" alt="Logo" />
+    </li>
+    <!-- LOGO -->
+
+    <!-- SEARCHBAR -->
+    <li nz-menu-item>
+        <nz-input-group [nzSuffix]="suffixIconSearch">
+            <input type="text" nz-input placeholder="Buscar receita..." [(ngModel)]="searchText"
+                (ngModelChange)="search($event)" />
+        </nz-input-group>
+
+        <ng-template #suffixIconSearch>
+            <img src="../../../assets/imgs/icon-busca.png" width="25">
+        </ng-template>
+    </li>
+    <!-- SEARCHBAR -->
+
+    <!-- BUTTONS -->
+    <!-- PEDIDOS -->
+    <li nz-menu-item>
+        <a href="#">
+            <!-- <img src="../../../assets/imgs/"> -->
+            Pedidos
+        </a>
+    </li>
+    <!-- PEDIDOS -->
+
+    <!-- RECEITAS -->
+    <li nz-menu-item>
+        <a routerLink="/lista-receitas/">
+            <!-- <img src="../../../assets/imgs/"> -->
+            Receitas
+        </a>
+    </li>
+    <!-- RECEITAS -->
+
+    <!-- SAIR -->
+    <li nz-menu-item>
+        <a routerLink="/">
+            <!-- <img src="../../../assets/imgs/"> -->
+            Sair
+        </a>
+    </li>
+    <!-- SAIR -->
+    <!-- BUTTONS -->
+</ul>
+<!-- MENU -->
+
+<!-- LIST -->
+<div class="pageContent">
+    <h2>Lista de receitas</h2>
+
+    <div class="divRecipes" *ngFor="let recipe of listSearch">
+        <img src="{{recipe.ImageURL}}" class="left">
+
+        <div class="left divInfoRecipe">
+            <h3>{{recipe.Name}}</h3>
+
+            <p>{{recipe.Description}}</p>
+        </div>
+
+        <button nz-button nzType="primary" nzShape="circle" class="left btnDetailsRecipe"
+            routerLink="/detalhes-receita/{{recipe.Id}}">
+            Ver
+            <br>
+            receita
+        </button>
+    </div>
+</div>
+<!-- LIST -->

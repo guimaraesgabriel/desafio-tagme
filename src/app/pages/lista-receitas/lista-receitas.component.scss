@@ -1,0 +1,43 @@
+#btnMenuCollapse {
+  margin: 1.5%;
+}
+
+::ng-deep .ant-menu-item,
+.ant-menu-submenu-title {
+  display: inline-block;
+}
+
+::ng-deep .ant-menu-dark .ant-menu-item-selected > a,
+.ant-menu-dark .ant-menu-item-selected > a:hover {
+  color: orangered;
+}
+
+::ng-deep .ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+  background-color: white;
+}
+
+.divRecipes {
+  border-top: 1px solid rgba(140, 140, 140, 0.4);
+  display: inline-flex;
+}
+
+.divInfoRecipe {
+  margin: 0 2%;
+}
+
+.btnDetailsRecipe {
+  height: 60px;
+  min-width: 60px;
+}
+
+@media (max-width: 768px) {
+  [nz-menu] {
+    width: 200px;
+    position: absolute;
+  }
+
+  ::ng-deep .ant-menu-item {
+    width: 100%;
+  }
+}

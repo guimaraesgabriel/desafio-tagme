@@ -1,0 +1,77 @@
+#divBackground {
+  height: 100%;
+  background-image: url("../../../assets/imgs/img-bg-login.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// INFO
+#divCenterInfo {
+  width: 40%;
+  padding-top: 3%;
+}
+
+#divInfo {
+  width: 100%;
+  margin: auto;
+  margin-bottom: 3%;
+  padding: 2%;
+  border-radius: 5px;
+  background-color: white;
+  display: inline-block;
+}
+
+#divInfoLeft {
+  color: orange;
+  text-align: center;
+  float: left;
+  padding-right: 2%;
+  border-right: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+#number {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+#divInfoRight {
+  font-style: italic;
+  padding-left: 2%;
+}
+// INFO
+
+// LOGO
+#divCenterLogoForm {
+  width: 30%;
+}
+
+#divLogo {
+  margin-bottom: 8%;
+}
+
+#logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: -webkit-fill-available;
+}
+// LOGO
+
+@media (max-width: 768px) {
+  #divBackground {
+    height: 100%;
+    background-image: url("../../../assets/imgs/img-bg-login.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #divCenterInfo {
+    width: 80%;
+  }
+
+  #divCenterLogoForm {
+    width: 70%;
+  }
+}

@@ -1,0 +1,65 @@
+<div id="divBackground">
+    <div id="divCenterInfo" class="center">
+        <!-- DIV INFO -->
+        <div id="divInfo">
+            <div id="divInfoLeft">
+                <span id="number">1</span>
+                <br>
+                <span>Novo pedido</span>
+            </div>
+
+            <div id="divInfoRight">
+                <span>Por favor, faça o login para ver o pedido e ter acesso a receita com o modo de preparo</span>
+            </div>
+        </div>
+        <!-- DIV INFO -->
+    </div>
+
+    <div id="divCenterLogoForm" class="center">
+        <!-- DIV LOGO -->
+        <div id="divLogo">
+            <img id="logo" src="../../../assets/imgs/logo-coco-bambu.png" alt="Coco Bambu Logo">
+        </div>
+        <!-- DIV LOGO -->
+
+        <!-- DIV FORM -->
+        <div id="divForm">
+            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="login()">
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Informe o Nome do Usuário">
+                        <nz-input-group [nzPrefix]="prefixTemplateUser">
+                            <input type="text" nz-input placeholder="Nome do Usuário" formControlName="Username" />
+                        </nz-input-group>
+                    </nz-form-control>
+
+                    <ng-template #prefixTemplateUser>
+                        <i nz-icon nzType="user"></i>
+                    </ng-template>
+                </nz-form-item>
+
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Informe a Senha">
+                        <nz-input-group [nzPrefix]="prefixTemplatePassword" [nzSuffix]="suffixTemplate">
+                            <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Senha"
+                                formControlName="Password" />
+                        </nz-input-group>
+
+                        <ng-template #prefixTemplatePassword>
+                            <i nz-icon nzType="lock"></i>
+                        </ng-template>
+
+                        <ng-template #suffixTemplate>
+                            <i class="pointer" nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                                (click)="passwordVisible = !passwordVisible"></i>
+                        </ng-template>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <button nz-button nzType="primary" nzBlock [nzLoading]="isLoading">
+                    Acessar
+                </button>
+            </form>
+        </div>
+        <!-- DIV FORM -->
+    </div>
+</div>
