@@ -58,21 +58,23 @@
 <div class="pageContent">
     <h2>Lista de receitas</h2>
 
-    <div class="divRecipes" *ngFor="let recipe of listSearch">
-        <img src="{{recipe.ImageURL}}" class="left">
+    <nz-list nzBordered>
+        <nz-list-item *ngFor="let recipe of listSearch">
+            <img class="imgRecipeSm" src="{{recipe.ImageURL}}">
 
-        <div class="left divInfoRecipe">
-            <h3>{{recipe.Name}}</h3>
+            <div class="divInfoRecipe">
+                <h3>{{recipe.Name}}</h3>
 
-            <p>{{recipe.Description}}</p>
-        </div>
+                <p>{{recipe.Description}}</p>
+            </div>
 
-        <button nz-button nzType="primary" nzShape="circle" class="left btnDetailsRecipe"
-            routerLink="/detalhes-receita/{{recipe.Id}}">
-            Ver
-            <br>
-            receita
-        </button>
-    </div>
+            <button nz-button nzType="primary" nzShape="circle" class="btnDetailsRecipe"
+                routerLink="/detalhes-receita/{{recipe.Id}}">
+                Ver
+                <br>
+                receita
+            </button>
+        </nz-list-item>
+    </nz-list>
 </div>
 <!-- LIST -->

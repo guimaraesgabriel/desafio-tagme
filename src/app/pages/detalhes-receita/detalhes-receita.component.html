@@ -1,1 +1,52 @@
-<p>detalhes-receita works!</p>
+<!-- IMAGE -->
+<div>
+
+</div>
+<!-- IMAGE -->
+
+<div class="pageContent">
+    <!-- LIST INGREDIENTS -->
+    <div id="divIngredients">
+        <h2>Ingredientes</h2>
+
+        <div *ngFor="let ingredient of listIngredients" class="list">
+            <div class="left">
+                <label nz-checkbox [(ngModel)]="ingredient.Done"></label>
+            </div>
+
+            <div class="left steps infoIngredient">
+                {{ingredient.Quantity}} {{ingredient.Unit}} - {{ingredient.Name}}
+            </div>
+
+            <br />
+        </div>
+    </div>
+    <!-- LIST INGREDIENTS -->
+
+    <nz-divider></nz-divider>
+
+    <!-- LIST STEPS -->
+    <div id="divSteps">
+        <h2>Modo de preparo</h2>
+
+        <div *ngFor="let step of listSteps" class="list">
+            <div class="left">
+                <label nz-checkbox [(ngModel)]="step.Done"></label>
+            </div>
+
+            <div class="left steps">
+                <h3>Passo {{ step.Order }}</h3>
+                <p>{{ step.ToDo }}</p>
+            </div>
+
+            <br />
+        </div>
+    </div>
+    <!-- LIST STEPS -->
+</div>
+
+<!-- FOOTER -->
+<div>
+
+</div>
+<!-- FOOTER -->

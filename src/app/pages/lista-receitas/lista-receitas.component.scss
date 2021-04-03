@@ -1,5 +1,6 @@
 #btnMenuCollapse {
-  margin: 1.5%;
+  margin: 2%;
+  margin-top: 3%;
 }
 
 ::ng-deep .ant-menu-item,
@@ -17,9 +18,8 @@
   background-color: white;
 }
 
-.divRecipes {
-  border-top: 1px solid rgba(140, 140, 140, 0.4);
-  display: inline-flex;
+.imgRecipeSm {
+  max-width: 100px;
 }
 
 .divInfoRecipe {
@@ -33,11 +33,17 @@
 
 @media (max-width: 768px) {
   [nz-menu] {
+    z-index: 20;
     width: 200px;
     position: absolute;
   }
 
   ::ng-deep .ant-menu-item {
     width: 100%;
+  }
+
+  .imgRecipeSm,
+  .btnDetailsRecipe {
+    margin: auto;
   }
 }
