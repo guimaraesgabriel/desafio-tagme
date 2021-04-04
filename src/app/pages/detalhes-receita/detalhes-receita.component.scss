@@ -1,3 +1,40 @@
+#divBtnReturn {
+  display: inline-block;
+}
+
+#divBtnReturn a {
+  color: white;
+  font-size: 16px;
+}
+
+#divPreparationTime {
+  color: black;
+  background-color: white;
+  float: right;
+  text-align: center;
+  margin: 1%;
+  padding: 1%;
+}
+
+#preparationTime {
+  font-weight: bold;
+}
+
+#divInfoRecipe {
+  position: absolute;
+  bottom: 0;
+  margin-left: 2%;
+}
+
+#recipeName {
+  color: white;
+  text-shadow: 1px 1px 2px #000;
+}
+
+#recipeDetails {
+  text-shadow: 1px 1px 2px #000;
+}
+
 .list {
   display: flex;
 }

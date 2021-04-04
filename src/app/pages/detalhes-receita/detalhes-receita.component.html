@@ -1,13 +1,39 @@
 <!-- IMAGE -->
-<div>
+<div id="divHeader" [ngStyle]="headerImageStyle">
+    <!-- DIV TOP -->
+    <div id="divTop">
+        <!-- BTN RETURN -->
+        <div id="divBtnReturn">
+            <a routerLink="/lista-receitas/">
+                <img src="../../../assets/imgs/icon-back.png">
+                Voltar
+            </a>
+        </div>
+        <!-- BTN RETURN -->
 
+        <!-- DIV PREPARATION TIME -->
+        <div id="divPreparationTime">
+            <img src="../../../assets/imgs/icon-time.png" alt="Relógio">
+
+            Tempo de preparo
+            <br>
+            <span id="preparationTime">{{recipe.PreparationTime}} minutos</span>
+        </div>
+        <!-- DIV PREPARATION TIME -->
+    </div>
+    <!-- DIV TOP -->
+
+    <div id="divInfoRecipe">
+        <h2 id="recipeName">{{recipe.Name}}</h2>
+        <p id="recipeDetails">{{recipe.Details}}</p>
+    </div>
 </div>
 <!-- IMAGE -->
 
 <div class="pageContent">
     <!-- LIST INGREDIENTS -->
     <div id="divIngredients">
-        <h2>Ingredientes</h2>
+        <h3>Ingredientes</h3>
 
         <div *ngFor="let ingredient of listIngredients" class="list">
             <div class="left">
@@ -27,7 +53,7 @@
 
     <!-- LIST STEPS -->
     <div id="divSteps">
-        <h2>Modo de preparo</h2>
+        <h3>Modo de preparo</h3>
 
         <div *ngFor="let step of listSteps" class="list">
             <div class="left">

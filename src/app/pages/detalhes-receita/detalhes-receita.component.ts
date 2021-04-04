@@ -7,6 +7,25 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./detalhes-receita.component.scss']
 })
 export class DetalhesReceitaComponent implements OnInit {
+  recipe = {
+    Name: "Arroz",
+    Details: "djsklhsdkfljshfklsjfhk fjsdhkfh sdkfj hsdjfsh kdfj hsldfjs hlkfjs",
+    ImageURL: "../../../assets/imgs/prato-arroz-grande.jpg",
+    PreparationTime: 20,
+  };
+
+  headerImageStyle = {
+    'background-image': 'url(' + this.recipe.ImageURL + ')',
+    'background-position': 'center',
+    'background-repeat': 'no-repeat',
+    'background-size': 'cover',
+    'margin-bottom': '1%',
+    'height': '40%',
+    'min-height': '300px',
+    'color': 'white',
+    'position': 'relative',
+  }
+
   listIngredients = [
     {
       Id: 1,
@@ -29,21 +48,18 @@ export class DetalhesReceitaComponent implements OnInit {
       Id: 10,
       Order: 1,
       ToDo: "Bla bla bla",
-      PreparationTime: 20,
       Done: false
     },
     {
       Id: 12,
       Order: 2,
       ToDo: "dfjlgjsghgdsgd",
-      PreparationTime: 45,
       Done: false
     },
     {
       Id: 13,
       Order: 3,
       ToDo: "kflbljhkflhkdj fghb kfj bfhd bkfd hjkfd hfjb hfdkh",
-      PreparationTime: 30,
       Done: false
     }
   ];
@@ -57,10 +73,15 @@ export class DetalhesReceitaComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((param: any) => {
       if (param.id) {
+        this.getInfoRecipe(param.Id);
         this.getAllIngredients(param.id);
         this.getAllSteps(param.id);
       }
     });
+  }
+
+  getInfoRecipe(recipeId) {
+
   }
 
   getAllIngredients(recipeId) {
