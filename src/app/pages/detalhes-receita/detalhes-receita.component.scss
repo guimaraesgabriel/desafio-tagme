@@ -1,10 +1,12 @@
+// HEADER
 #divBtnReturn {
   display: inline-block;
 }
 
 #divBtnReturn a {
-  color: white;
   font-size: 16px;
+  color: white;
+  text-shadow: 1px 1px 2px #000;
 }
 
 #divPreparationTime {
@@ -34,6 +36,7 @@
 #recipeDetails {
   text-shadow: 1px 1px 2px #000;
 }
+// HEADER
 
 .list {
   display: flex;
@@ -70,3 +73,25 @@
 .infoIngredient {
   align-self: center;
 }
+
+// FOOTER
+#divFooter {
+  height: 50px;
+  background-color: white;
+  border-top: 1px solid rgba(179, 179, 179, 0.4);
+}
+
+#btnStart {
+  margin: 1%;
+  float: right;
+  min-width: 115px;
+}
+
+#btnFinish {
+  background-color: green;
+  color: white;
+  margin: 1%;
+  float: right;
+  min-width: 115px;
+}
+// FOOTER

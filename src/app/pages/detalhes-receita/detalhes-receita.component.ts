@@ -1,3 +1,4 @@
+import { NzModalService } from 'ng-zorro-antd';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,6 +8,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./detalhes-receita.component.scss']
 })
 export class DetalhesReceitaComponent implements OnInit {
+  isValid: boolean = false;
+  inProgress: boolean = false;
+
   recipe = {
     Name: "Arroz",
     Details: "djsklhsdkfljshfklsjfhk fjsdhkfh sdkfj hsdjfsh kdfj hsldfjs hlkfjs",
@@ -66,6 +70,7 @@ export class DetalhesReceitaComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private modal: NzModalService,
   ) {
 
   }
@@ -90,5 +95,33 @@ export class DetalhesReceitaComponent implements OnInit {
 
   getAllSteps(recipeId) {
 
+  }
+
+  verifyAllOptionsValid() {
+    const missingIngredients = this.listIngredients.some(element => !element.Done);
+    const missingSteps = this.listSteps.some(element => !element.Done);
+
+    if (!missingIngredients && !missingSteps) {
+      this.isValid = true;
+    } else {
+      this.isValid = false;
+    }
+  }
+
+  start() {
+    this.inProgress = true;
+  }
+
+  finish() {
+    const modal = this.modal.create({
+      nzTitle: "Obrigado",
+      nzContent: "Prato finalizado com sucesso.",
+      nzFooter: [
+        {
+          label: 'OK',
+          onClick: () => modal.destroy()
+        },
+      ]
+    });
   }
 }

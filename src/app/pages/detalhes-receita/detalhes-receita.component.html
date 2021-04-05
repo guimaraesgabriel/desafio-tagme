@@ -37,7 +37,7 @@
 
         <div *ngFor="let ingredient of listIngredients" class="list">
             <div class="left">
-                <label nz-checkbox [(ngModel)]="ingredient.Done"></label>
+                <label nz-checkbox [(ngModel)]="ingredient.Done" (ngModelChange)="verifyAllOptionsValid()"></label>
             </div>
 
             <div class="left steps infoIngredient">
@@ -57,7 +57,7 @@
 
         <div *ngFor="let step of listSteps" class="list">
             <div class="left">
-                <label nz-checkbox [(ngModel)]="step.Done"></label>
+                <label nz-checkbox [(ngModel)]="step.Done" (ngModelChange)="verifyAllOptionsValid()"></label>
             </div>
 
             <div class="left steps">
@@ -72,7 +72,18 @@
 </div>
 
 <!-- FOOTER -->
-<div>
+<nz-affix nzOffsetBottom="0">
+    <div id="divFooter">
+        <button nz-button id="btnStart" nzType="primary" [disabled]="!isValid" (click)="start()"
+            *ngIf="!inProgress; else templateBtnFinish">
+            Iniciar preparação
+        </button>
 
-</div>
+        <ng-template #templateBtnFinish>
+            <button nz-button nzType="default" id="btnFinish" (click)="finish()">
+                Finalizar
+            </button>
+        </ng-template>
+    </div>
+</nz-affix>
 <!-- FOOTER -->
