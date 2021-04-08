@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { DetalhesReceitaComponent } from './pages/detalhes-receita/detalhes-receita.component';
 import { ListaReceitasComponent } from './pages/lista-receitas/lista-receitas.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -11,13 +12,14 @@ const routes: Routes = [
   },
   {
     path: "lista-receitas",
-    component: ListaReceitasComponent
+    component: ListaReceitasComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: "detalhes-receita/:id",
-    component: DetalhesReceitaComponent
+    component: DetalhesReceitaComponent,
+    canActivate: [AuthGuard],
   },
-
 ];
 
 @NgModule({
