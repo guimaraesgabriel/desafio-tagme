@@ -1,3 +1,5 @@
+import { NzNotificationService } from 'ng-zorro-antd';
+import { ConfigService } from './../../services/config.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,11 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista-receitas.component.scss']
 })
 export class ListaReceitasComponent implements OnInit {
+  //MENU
   windowWidth = window.innerWidth;
-
   mode = this.windowWidth >= 768 ? "horizontal" : "vertical";
-
   isCollapsed = false;
+
+  searchText = "";
+  listSearch = [];
+  //MENU
 
   listRecipes = [
     {
@@ -46,19 +51,31 @@ export class ListaReceitasComponent implements OnInit {
     },
   ];
 
-  searchText = "";
-
-  listSearch = [];
-
   constructor(
     private router: Router,
+    private config: ConfigService,
+    private notification: NzNotificationService,
   ) {
-    this.listSearch = this.listRecipes;
+    // this.listSearch = this.listRecipes;
   }
 
   ngOnInit() {
   }
 
+  getAllRecipes() {
+    this.config.getAll('recipes/').then((response: any) => {
+      if (response != null) {
+        this.listRecipes = response;
+        this.listSearch = response;
+      } else {
+        this.notification.create("error", "Erro", "Erro ao listar as receitas");
+      }
+    }, (error) => {
+      this.notification.create("error", "Requisição - Erro ao listar as receitas", error.message);
+    });
+  }
+
+  //MENU
   search(text): void {
     if (text != "") {
       this.listSearch = this.listRecipes.filter(element =>
@@ -78,4 +95,5 @@ export class ListaReceitasComponent implements OnInit {
     sessionStorage.clear();
     this.router.navigate(['/']);
   }
+  //MENU
 }

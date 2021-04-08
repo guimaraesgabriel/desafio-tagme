@@ -11,6 +11,13 @@ export class DetalhesReceitaComponent implements OnInit {
   isValid: boolean = false;
   inProgress: boolean = false;
 
+  recipe = {
+    Name: "Arroz",
+    Description: "djsklhsdkfljshfklsjfhk fjsdhkfh sdkfj hsdjfsh kdfj hsldfjs hlkfjs",
+    ImageURL: "../../../assets/imgs/prato-arroz-grande.jpg",
+    PreparationTime: 20,
+  };
+
   headerImageStyle = {
     'background-image': 'url(' + this.recipe.ImageURL + ')',
     'background-position': 'center',
@@ -23,25 +30,16 @@ export class DetalhesReceitaComponent implements OnInit {
     'position': 'relative',
   }
 
-  recipe = {
-    Name: "Arroz",
-    Description: "djsklhsdkfljshfklsjfhk fjsdhkfh sdkfj hsdjfsh kdfj hsldfjs hlkfjs",
-    ImageURL: "../../../assets/imgs/prato-arroz-grande.jpg",
-    PreparationTime: 20,
-  };
-
   listIngredients = [
     {
       Id: 1,
       Quantity: 1,
-      UnitMeasurement: "unid.",
       Name: "Cebola",
       Done: false,
     },
     {
       Id: 3,
       Quantity: 500,
-      UnitMeasurement: "gramas",
       Name: "Farinha",
       Done: false,
     },
