@@ -73,4 +73,9 @@ export class ListaReceitasComponent implements OnInit {
   toggleCollapsed(): void {
     this.isCollapsed = !this.isCollapsed;
   }
+
+  logout() {
+    sessionStorage.clear();
+    this.router.navigate(['/']);
+  }
 }
