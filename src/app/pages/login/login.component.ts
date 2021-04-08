@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private notification: NzNotificationService,
     private router: Router,
+    private loginService: LoginService,
   ) { }
 
   ngOnInit() {
@@ -50,18 +52,31 @@ export class LoginComponent implements OnInit {
     }
 
     if (this.validateForm.valid) {
-      let validUser = this.validUsers.find(element =>
-        element.Username == this.validateForm.get("Username").value
-        && element.Password == this.validateForm.get("Password").value
-      );
+      // let validUser = this.validUsers.find(element =>
+      //   element.Username == this.validateForm.get("Username").value
+      //   && element.Password == this.validateForm.get("Password").value
+      // );
 
-      if (validUser) {
-        this.router.navigate(['/lista-receitas/']);
-      } else {
-        this.notification.create("error", "Erro", "Usuário não encontrado.");
-      }
+      // if (validUser) {
+      //   sessionStorage.setItem("l", "true");
+      //   this.router.navigate(['/lista-receitas/']);
+      // } else {
+      //   this.notification.create("error", "Erro", "Usuário não encontrado.");
+      // }
 
-      this.isLoading = false;
+      // this.isLoading = false;
+
+      //API
+      this.loginService.login(this.validateForm.value).then((response) => {
+        if (response != null) {
+          sessionStorage.setItem("l", "true");
+          this.router.navigate(['/lista-receitas/']);
+        } else {
+          this.notification.create("error", "Erro", "Usuário não encontrado.");
+        }
+
+        this.isLoading = false;
+      });
     } else {
       this.notification.create("error", "Erro", "Campos inválidos ou faltando preenchimento.");
       this.isLoading = false;
