@@ -1,27 +1,38 @@
-# DesafioTagme
+# Plugins / Dependências
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.25.
+NG Zorro
 
-## Development server
+# Instalar as dependências indicadas no package.json
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+npm install
 
-## Code scaffolding
+# Formas de rodar o projeto - http://localhost:8000/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ng serve -o --port 8000
 
-## Build
+# ### Poderia melhorar
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# Login
 
-## Running unit tests
+Card informando Passo 1 - o alinhamento do texto a direita não está verticalmente centralizado.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Lista Receitas
 
-## Running end-to-end tests
+O menu poderia estar componentizado ao invés de estar diretamente na lista.
+Os itens da lista não estão devidamente distribuídos, o botão de "Ver Receita" está mais próximo quando o texto é mais curto.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+# Detalhes Receitas
 
-## Further help
+Card de Tempo de preparo - o alinhamento do texto a direita não está verticalmente centralizado.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# Problemas
+
+A tela de Detalhes Receita não esta exibindo as informações vindas da API, no frontend ela retorna um erro. Para continuidade do processo as informações estão estáticas vindas do próprio .ts.
+
+# Observações
+
+Queria dizer que me diverti muito fazendo o projeto, sobre os pontos do tópico "Poderia melhorar" não puderam ser de fato melhorados por questão de tempo e por esse mesmo motivo instalei o plugin do NG Zorro ao invés de fazer tudo com Javascript puro.
+
+Infelizmente não pude dar a atenção que gostaria devido as minhas outras obrigações, mas vou continuar estudando e implementando este projeto.
+
+Muito obrigado.

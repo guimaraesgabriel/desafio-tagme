@@ -29,6 +29,10 @@ export class ConfigService {
     return this.http.get(this.API_URL + collection).toPromise();
   }
 
+  public getAllParam(collection, param) {
+    return this.http.get(this.API_URL + collection + param).toPromise();
+  }
+
   public get(collection, id) {
     return this.http.get(this.API_URL + collection + id).toPromise();
   }

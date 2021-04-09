@@ -1,6 +1,7 @@
-import { NzModalService } from 'ng-zorro-antd';
+import { ConfigService } from './../../services/config.service';
+import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalhes-receita',
@@ -49,49 +50,88 @@ export class DetalhesReceitaComponent implements OnInit {
     {
       Id: 10,
       Order: 1,
-      ToDo: "Bla bla bla",
+      Step: "Bla bla bla",
       Done: false
     },
     {
       Id: 12,
       Order: 2,
-      ToDo: "dfjlgjsghgdsgd",
+      Step: "dfjlgjsghgdsgd",
       Done: false
     },
     {
       Id: 13,
       Order: 3,
-      ToDo: "kflbljhkflhkdj fghb kfj bfhd bkfd hjkfd hfjb hfdkh",
+      Step: "kflbljhkflhkdj fghb kfj bfhd bkfd hjkfd hfjb hfdkh",
       Done: false
     }
   ];
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private modal: NzModalService,
+    private config: ConfigService,
+    private notification: NzNotificationService,
   ) {
   }
 
   ngOnInit() {
     this.route.params.subscribe((param: any) => {
       if (param.id) {
-        this.getInfoRecipe(param.Id);
+        this.getInfoRecipe(param.id);
         this.getAllIngredients(param.id);
         this.getAllSteps(param.id);
+      } else {
+        this.router.navigate(['lista-receitas']);
       }
     });
   }
 
   getInfoRecipe(recipeId) {
-
+    this.config.get("recipe/", recipeId).then((response: any) => {
+      if (response != null) {
+        this.recipe = response;
+      } else {
+        this.notification.create("error", "Erro", "Erro ao recuperar informações da receita");
+      }
+    }, (error) => {
+      this.notification.create("error", "Requisição - Erro ao recuperar informações da receita", error.message);
+    });
   }
 
   getAllIngredients(recipeId) {
-
+    this.config.getAllParam("recipeIngredients/", recipeId).then((response: any) => {
+      if (response != null) {
+        var objDone = { Done: false };
+        this.listIngredients = Object.assign(response, objDone);
+      } else {
+        this.notification.create("error", "Erro", "Erro ao recuperar informações dos ingredientes da receita");
+      }
+    }, (error) => {
+      this.notification.create(
+        "error",
+        "Requisição - Erro ao recuperar informações dos ingredientes da receita",
+        error.message
+      );
+    });
   }
 
   getAllSteps(recipeId) {
-
+    this.config.getAllParam("recipeSteps/", recipeId).then((response: any) => {
+      if (response != null) {
+        var objDone = { Done: false };
+        this.listSteps = Object.assign(response, objDone);
+      } else {
+        this.notification.create("error", "Erro", "Erro ao recuperar informações dos passos da receita");
+      }
+    }, (error) => {
+      this.notification.create(
+        "error",
+        "Requisição - Erro ao recuperar informações dos passos da receita",
+        error.message
+      );
+    });
   }
 
   verifyAllOptionsValid() {

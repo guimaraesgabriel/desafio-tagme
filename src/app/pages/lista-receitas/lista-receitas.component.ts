@@ -60,10 +60,11 @@ export class ListaReceitasComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAllRecipes();
   }
 
   getAllRecipes() {
-    this.config.getAll('recipes/').then((response: any) => {
+    this.config.getAll('recipe/').then((response: any) => {
       if (response != null) {
         this.listRecipes = response;
         this.listSearch = response;
