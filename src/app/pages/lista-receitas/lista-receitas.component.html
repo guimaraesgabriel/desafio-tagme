@@ -5,7 +5,7 @@
 
 <ul nz-menu [nzMode]="mode" nzTheme="dark" *ngIf="mode == 'horizontal' || isCollapsed">
     <!-- LOGO -->
-    <li nz-menu-item>
+    <li nz-menu-item id="divLogo">
         <img src="../../../assets/imgs/logo-coco-bambu-mini.png" alt="Logo" />
     </li>
     <!-- LOGO -->
@@ -25,7 +25,7 @@
 
     <!-- BUTTONS -->
     <!-- PEDIDOS -->
-    <li nz-menu-item>
+    <li nz-menu-item nzMatchRouter>
         <a href="#">
             <!-- <img src="../../../assets/imgs/"> -->
             Pedidos
@@ -34,7 +34,7 @@
     <!-- PEDIDOS -->
 
     <!-- RECEITAS -->
-    <li nz-menu-item>
+    <li nz-menu-item nzMatchRouter="true">
         <a routerLink="/lista-receitas/">
             <!-- <img src="../../../assets/imgs/"> -->
             Receitas
@@ -65,7 +65,7 @@
             <div class="divInfoRecipe">
                 <h3>{{recipe.Name}}</h3>
 
-                <p>{{recipe.Description}}</p>
+                <p class="recipeDescription">{{recipe.Description}}</p>
             </div>
 
             <button nz-button nzType="primary" nzShape="circle" class="btnDetailsRecipe"

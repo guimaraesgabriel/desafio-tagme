@@ -18,17 +18,28 @@
   background-color: white;
 }
 
+#divLogo {
+  pointer-events: none;
+  cursor: default;
+}
+
 .imgRecipeSm {
   max-width: 100px;
 }
 
+.recipeDescription {
+  max-width: 95%;
+}
+
 .divInfoRecipe {
-  margin: 0 2%;
+  margin: 0 3%;
 }
 
 .btnDetailsRecipe {
   height: 60px;
   min-width: 60px;
+  right: 10px;
+  position: absolute;
 }
 
 @media (max-width: 768px) {
@@ -45,5 +56,9 @@
   .imgRecipeSm,
   .btnDetailsRecipe {
     margin: auto;
+  }
+
+  .recipeDescription {
+    max-width: 90%;
   }
 }
